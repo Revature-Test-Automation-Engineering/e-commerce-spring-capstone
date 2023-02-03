@@ -37,4 +37,6 @@ public class ProductReview {
         this.postId = product;
         this.userId = user;
     }
+
+
 }
