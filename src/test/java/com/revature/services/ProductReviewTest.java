@@ -93,45 +93,56 @@ class ProductReviewTest {
     }
     @DisplayName("Find product review average score - negative testing")
     @Test
-    void findProductAverageScore_WithListSizeZero() {
+    void findProductAverageScore_withListSizeZero() {
         when(productReviewRepository.findProductAverageScore(102)).thenReturn(Arrays.asList());
         List<Integer> list = new ArrayList<>(productReviewRepository.findProductAverageScore(102));
-        assertEquals(list.size(), productReviewService.findProductAverageScore(102));
+        assertEquals(list.size(), productReviewService.findProductAverageScore(101));
+        assertEquals(0, list.size());
     }
 
-    @DisplayName("Find product by product id and rating")
+    @DisplayName("Find product review by product id and rating")
     @Test
     void findProductByScore() {
         when(productReviewRepository.findAllByProductScore(101, 5)).thenReturn(productReviewMock);
         assertEquals(2, productReviewService.findProductByScore(101, 5).size());
     }
-    @DisplayName("User id with product id can post")
+    @DisplayName("User id with product id can post product review")
     @Test
-    void canPost() {
+    void canPostProductReview() {
         when(productReviewRepository.canPost(101, 201)).thenReturn(productReviewMock);
         assertFalse(productReviewService.canPost(101, 201));
     }
     @DisplayName("Updating product review")
     @Test
-    void save() {
+    void saveNewProductReview() {
+        // Mock data
+        Product product = new Product(102, 2, 5, "perishable", "img", "tomato", true);
+        ProductReviewRequest prr = new ProductReviewRequest(1,4,"good",102);
+        User user1 = new User(202, "email", "pwd", "fname", "lname", false, true, "valid");
+        ProductReview pr = new ProductReview(102, 4, "good", product,user1);
 
-        when(productRepository.findActiveById(101)).thenReturn(Optional.of(new Product()));
-        when(productReviewRepository.save(any(ProductReview.class))).thenReturn(new ProductReview());
-        ProductReview p = productReviewService.save(new ProductReviewRequest(1,4,"good",101), new User());
+        //When
+        when(productRepository.findActiveById(102)).thenReturn(Optional.of(product));
+        when(productReviewRepository.save(new ProductReview(prr, product, user1))).thenReturn(pr);
+
+        //Then
+        ProductReview p = productReviewService.save(prr, user1);
         verify(productReviewRepository, times(1)).save(any(ProductReview.class));
-        assertNotNull(p);
+        assertEquals(4, p.getRating());
+
     }
-    @DisplayName("Return null if rating > 5 - Exception")
+    @DisplayName("Throw NullPointerException if rating > 5/comment=null")
     @Test
-    void doNotSaveRatingMoreThan5() {
+    void doNotSaveProductReviewRatingMoreThan5orNillComment() {
         lenient().when(productReviewRepository.save(any(ProductReview.class)))
                 .thenReturn(new ProductReview()).thenThrow(NullPointerException.class);
-        productReviewService.save(new ProductReviewRequest(1, 7, "", 101), new User());
+        ProductReview p = productReviewService.save(new ProductReviewRequest(1, 7, "", 101), new User());
+        assertNull(p);
     }
 
     @DisplayName("Delete a product review by id")
     @Test
-    void deleteById() {
+    void deleteProductReviewById() {
         productReviewService.deleteById(101);
         verify(productReviewRepository, times(1)).deleteById(101);
     }
