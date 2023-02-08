@@ -19,6 +19,7 @@ src/main/resources/application.yaml
 *.iws
 *.iml
 *.ipr
+*.yaml
 
 ### NetBeans ###
 /nbproject/private/
@@ -40,3 +41,5 @@ src/main/.DS_Store
 src/main/java/.DS_Store
 src/main/java/com/.DS_Store
 src/main/java/com/revature/.DS_Store
+
+.yaml
