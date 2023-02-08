@@ -10,6 +10,7 @@ public class SendEmailService {
     private JavaMailSender emailSender;
 
     public SendEmailService(JavaMailSender emailSender) {
+
         this.emailSender = emailSender;
     }
 

@@ -59,10 +59,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 </td>
 <td class="coverageStat">
   <span class="percent">
-    89.7%
+    94.9%
   </span>
   <span class="absValue">
-    (35/39)
+    (37/39)
   </span>
 </td>
 </tr>
@@ -132,7 +132,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <b class="fc">&nbsp;        if(list.size()!=0) {</b>
 <b class="fc">&nbsp;            return (int) sum / list.size();</b>
 &nbsp;        }else {
-<b class="nc">&nbsp;            return 0;</b>
+<b class="fc">&nbsp;            return 0;</b>
 &nbsp;        }
 &nbsp;    }
 &nbsp;
@@ -158,7 +158,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 &nbsp;    public ProductReview save(ProductReviewRequest productReview, User user) {
 &nbsp;        try {
 <b class="fc">&nbsp;            if(productReview.getRating()&lt;1||productReview.getRating()&gt;5||productReview.getComment().trim().equals(&quot;&quot;)||!canPost(productReview.getPostId(),user.getId()))</b>
-<b class="nc">&nbsp;            {return null;}</b>
+<b class="fc">&nbsp;            {return null;}</b>
 &nbsp;
 &nbsp;
 <b class="fc">&nbsp;            return productReviewRepository.save(new ProductReview(</b>
@@ -196,7 +196,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2023-02-03 17:01</div>
+    <div style="float:right;">generated on 2023-02-06 11:30</div>
 </div>
 </body>
 </html>
