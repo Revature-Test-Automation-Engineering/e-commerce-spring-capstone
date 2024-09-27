@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class MainPage {
-
     private WebDriver driver;
 
     public MainPage(WebDriver driver) {
@@ -16,13 +15,13 @@ public class MainPage {
     }
 
     @FindBy(xpath = "/html/body/div/div[1]/div/div[1]/h1/img")
-    public WebElement mainPageBtn;
+    public WebElement mainPageButton;
 
     @FindBy(xpath = "/html/body/div/div[2]/div/div/input")
     public WebElement searchBar;
 
     @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/span/span[1]/span[1]/input")
-    public WebElement themeBtn;
+    public WebElement themeButton;
 
     @FindBy(linkText = "//strong[contains(text(),'REGISTER')]")
     public WebElement register;
@@ -42,6 +41,6 @@ public class MainPage {
     @FindBy(xpath = "//strong[contains(text(),'LOGOUT')]")
     public WebElement logout;
 
-    @FindBy(xpath = "/html/body/div/div[1]/div/div[2]/div[3]/span/svg/path")
-    public WebElement cartBtn;
+    @FindBy(xpath = "(//div[@class='sc-gsnTZi fiUFVv']//div)[last()]]")
+    public WebElement cartButton;
 }

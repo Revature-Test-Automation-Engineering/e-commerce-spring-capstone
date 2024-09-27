@@ -4,8 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 public class UserProfilePage {
+
 
     private WebDriver driver;
 
@@ -24,13 +24,13 @@ public class UserProfilePage {
     public WebElement password;
 
     @FindBy(xpath="//button[text() = 'Update']")
-    public WebElement updateBtn;
+    public WebElement updateButton;
 
     @FindBy(id="deactivate")
     public WebElement deactivate;
 
     @FindBy(xpath="//button[text() = 'Deactivate']")
-    public WebElement deactivateBtn;
+    public WebElement deactivateButton;
 
     @FindBy(id="cardNumber")
     public WebElement cardNumber;
@@ -45,6 +45,7 @@ public class UserProfilePage {
     public WebElement addPayment;
 
     @FindBy(xpath="//button[text() = 'DELETE']")
-    public WebElement deleteBtn;
+    public WebElement deleteButton;
+
 
 }
